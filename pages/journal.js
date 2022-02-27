@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import {
   Flex,
   Heading,
+  Box,
   InputGroup,
   InputLeftElement,
   Input,
@@ -9,6 +10,9 @@ import {
   Text,
   IconButton,
   Divider,
+  Menu,
+  Avatar,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import DarkModeSwitch from "../components/DarkModeSwitch";
 import {
@@ -18,10 +22,14 @@ import {
   AuthAction,
 } from "next-firebase-auth";
 import getAbsoluteURL from "../utils/getAbsoluteURL";
-import { AddIcon, DeleteIcon, StarIcon } from "@chakra-ui/icons";
+import {
+  AddIcon,
+  DeleteIcon,
+  ExternalLinkIcon,
+  QuestionOutlineIcon,
+} from "@chakra-ui/icons";
 import firebase from "firebase/app";
 import "firebase/firestore";
-import Navbar from "../components/Navbar";
 
 const Emoji = () => {
   const AuthUser = useAuthUser();
@@ -74,7 +82,53 @@ const Emoji = () => {
 
   return (
     <>
-      <Navbar heading={"Welcome back, " + AuthUser.displayName} />
+      {/* navbar */}
+      <Box
+        id="navbar"
+        bg={useColorModeValue("gray.100", "gray.900")}
+        px={4}
+        borderBottom="1px"
+        borderColor={useColorModeValue("gray.200", "gray.700")}
+      >
+        <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
+          <Button variant={"solid"} colorScheme={"teal"} size={"sm"}>
+            Dailymoji
+          </Button>
+          <Heading id="welcomeText">
+            {"Welcome back, " + AuthUser.displayName}
+          </Heading>
+          <Flex alignItems={"center"}>
+            <Menu>
+              <Flex justify="space-between" w="100%" align="center">
+                <Flex>
+                  <DarkModeSwitch />
+                  <IconButton
+                    ml={2}
+                    // onClick={
+                    //   // TODO - open a modal with info like app developers
+                    // }
+                    icon={<QuestionOutlineIcon />}
+                  />
+                  <IconButton
+                    ml={2}
+                    onClick={AuthUser.signOut}
+                    icon={<ExternalLinkIcon />}
+                  />
+                </Flex>
+              </Flex>
+              <Avatar
+                ml={2}
+                size={"sm"}
+                src={
+                  // get user image from firebase
+                  AuthUser.photoURL
+                }
+              />
+            </Menu>
+          </Flex>
+        </Flex>
+      </Box>
+
       <Flex
         flexDir="column"
         maxW={800}
@@ -84,14 +138,6 @@ const Emoji = () => {
         m="auto"
         px={4}
       >
-        <Flex justify="space-between" w="100%" align="center">
-          <Flex>
-            <DarkModeSwitch />
-            {/* TODO: change this icon to something other than a star */}
-            <IconButton ml={2} onClick={AuthUser.signOut} icon={<StarIcon />} />
-          </Flex>
-        </Flex>
-
         <InputGroup>
           <InputLeftElement
             pointerEvents="none"

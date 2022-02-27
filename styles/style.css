@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500&display=swap');
+
 html,
 body {
   padding: 0;
@@ -17,8 +19,7 @@ a {
 
 #welcomeText {
   text-align: center;
-}
-
-#navbar {
-  border: solid 2px red;
+  font-size: 1.4rem;
+  font-weight: normal;
+  font-family: 'Poppins', sans-serif;
 }
