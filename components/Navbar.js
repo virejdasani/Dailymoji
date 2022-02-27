@@ -20,6 +20,7 @@ import {
   Stack,
   Heading,
 } from "@chakra-ui/react";
+import { StarIcon } from "@chakra-ui/icons";
 import DarkModeSwitch from "./DarkModeSwitch";
 
 export default function withAction(props) {
@@ -41,8 +42,9 @@ export default function withAction(props) {
                   {/* TODO: change this icon to something other than a star */}
                   <IconButton
                     ml={2}
+                    // TODO :
                     // onClick={AuthUser.signOut}
-                    // icon={<StarIcon />}
+                    icon={<StarIcon />}
                   />
                 </Flex>
               </Flex>
