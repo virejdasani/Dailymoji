@@ -28,9 +28,6 @@ const Emoji = () => {
   const [input, setInput] = useState("");
   const [emojis, setEmojis] = useState([]);
 
-  // console.log(AuthUser)
-  // console.log(emojis)
-
   useEffect(() => {
     AuthUser.id &&
       firebase
@@ -77,20 +74,17 @@ const Emoji = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar heading={"Welcome back, " + AuthUser.displayName} />
       <Flex
         flexDir="column"
         maxW={800}
         align="center"
-        justify="center"
+        // justify="center"
         minH="100vh"
         m="auto"
         px={4}
       >
         <Flex justify="space-between" w="100%" align="center">
-          <Heading id="welcomeText" mb={4}>
-            Welcome, {AuthUser.displayName}!
-          </Heading>
           <Flex>
             <DarkModeSwitch />
             {/* TODO: change this icon to something other than a star */}
