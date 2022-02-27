@@ -18,3 +18,7 @@ a {
 #welcomeText {
   text-align: center;
 }
+
+#navbar {
+  border: solid 2px red;
+}

@@ -21,6 +21,7 @@ import getAbsoluteURL from "../utils/getAbsoluteURL";
 import { AddIcon, DeleteIcon, StarIcon } from "@chakra-ui/icons";
 import firebase from "firebase/app";
 import "firebase/firestore";
+import Navbar from "../components/Navbar";
 
 const Emoji = () => {
   const AuthUser = useAuthUser();
@@ -75,70 +76,73 @@ const Emoji = () => {
   };
 
   return (
-    <Flex
-      flexDir="column"
-      maxW={800}
-      align="center"
-      justify="center"
-      minH="100vh"
-      m="auto"
-      px={4}
-    >
-      <Flex justify="space-between" w="100%" align="center">
-        <Heading id="welcomeText" mb={4}>
-          Welcome, {AuthUser.displayName}!
-        </Heading>
-        <Flex>
-          <DarkModeSwitch />
-          {/* TODO: change this icon to something other than a star */}
-          <IconButton ml={2} onClick={AuthUser.signOut} icon={<StarIcon />} />
+    <>
+      <Navbar />
+      <Flex
+        flexDir="column"
+        maxW={800}
+        align="center"
+        justify="center"
+        minH="100vh"
+        m="auto"
+        px={4}
+      >
+        <Flex justify="space-between" w="100%" align="center">
+          <Heading id="welcomeText" mb={4}>
+            Welcome, {AuthUser.displayName}!
+          </Heading>
+          <Flex>
+            <DarkModeSwitch />
+            {/* TODO: change this icon to something other than a star */}
+            <IconButton ml={2} onClick={AuthUser.signOut} icon={<StarIcon />} />
+          </Flex>
         </Flex>
-      </Flex>
 
-      <InputGroup>
-        <InputLeftElement
-          pointerEvents="none"
-          children={<AddIcon color="gray.300" />}
-        />
-        <Input
-          id="emojiInput"
-          type="text"
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Add emoji"
-        />
-        <Button ml={2} onClick={() => sendData()}>
-          Add Emoji
-        </Button>
-      </InputGroup>
+        <InputGroup>
+          <InputLeftElement
+            pointerEvents="none"
+            children={<AddIcon color="gray.300" />}
+          />
+          <Input
+            id="emojiInput"
+            type="text"
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Add emoji"
+          />
+          <Button ml={2} onClick={() => sendData()}>
+            Add Emoji
+          </Button>
+        </InputGroup>
 
-      {emojis.map((t, i) => {
-        return (
-          <>
-            {i > 0 && <Divider />}
-            <Flex
-              key={i}
-              w="100%"
-              p={5}
-              my={2}
-              align="center"
-              borderRadius={5}
-              justifyContent="space-between"
-            >
-              <Flex align="center">
-                <Text fontSize="xl" mr={4}>
-                  {i + 1}.
-                </Text>
-                <Text>{t}</Text>
+        {emojis.map((t, i) => {
+          return (
+            <>
+              {i > 0 && <Divider />}
+              <Flex
+                key={i}
+                w="100%"
+                p={5}
+                my={2}
+                align="center"
+                borderRadius={5}
+                justifyContent="space-between"
+              >
+                <Flex align="center">
+                  <Text fontSize="xl" mr={4}>
+                    {i + 1}.
+                  </Text>
+                  <Text>{t}</Text>
+                </Flex>
+                <IconButton
+                  onClick={() => deleteEmoji(t)}
+                  icon={<DeleteIcon />}
+                />
               </Flex>
-              <IconButton
-                onClick={() => deleteEmoji(t)}
-                icon={<DeleteIcon />}
-              />
-            </Flex>
-          </>
-        );
-      })}
-    </Flex>
+            </>
+          );
+        })}
+      </Flex>
+    </>
   );
 };
 
