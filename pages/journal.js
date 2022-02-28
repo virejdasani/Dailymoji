@@ -160,62 +160,6 @@ const Emoji = () => {
           return (
             <>
               {i > 0}
-              {/* <Flex
-                key={i}
-                w="100%"
-                p={5}
-                my={2}
-                align="center"
-                borderRadius={5}
-                justifyContent="space-between"
-              >
-                <Flex align="center">
-                  <Text fontSize="xl" mr={4}>
-                    {i + 1}.
-                  </Text>
-                  <Text>{t}</Text>
-                </Flex>
-                <IconButton
-                  onClick={() => deleteEmoji(t)}
-                  icon={<DeleteIcon />}
-                />
-              </Flex> */}
-              {/* <Stack
-                bg={useColorModeValue("gray.200", "gray.800")}
-                border={useColorModeValue("green.300", "green.700")}
-                id="card"
-                w="100%"
-                p="4"
-                m="4"
-                boxShadow="lg"
-                borderRadius="lg"
-                key={i}
-                // justifyContent="space-between"
-              >
-                <Stack
-                  direction={{ base: "column", md: "row" }}
-                  justifyContent="space-between"
-                >
-                  <Stack direction={{ base: "column", md: "row" }}>
-                    <Text fontWeight="semibold">{t}</Text>
-                  </Stack>
-                  <Stack direction={{ base: "column", md: "row" }}>
-                    <Text
-                      fontSize={{ base: "sm" }}
-                      textAlign={"left"}
-                      maxW={"xl"}
-                    >
-                      Context
-                    </Text>
-                  </Stack>
-                  <Stack direction={{ base: "column", md: "row" }}>
-                    <IconButton
-                      onClick={() => deleteEmoji(t)}
-                      icon={<DeleteIcon />}
-                    />
-                  </Stack>
-                </Stack>
-              </Stack> */}
               <Flex
                 key={i}
                 w="100%"
