@@ -9,7 +9,9 @@ import {
   Button,
   Text,
   IconButton,
+  Stack,
   Divider,
+  Spacer,
   Menu,
   Avatar,
   useColorModeValue,
@@ -105,7 +107,7 @@ const Emoji = () => {
                   <IconButton
                     ml={2}
                     // onClick={
-                    //   // TODO - open a modal with info like app developers
+                    //    TODO - open a modal with info like app developers
                     // }
                     icon={<QuestionOutlineIcon />}
                   />
@@ -157,8 +159,8 @@ const Emoji = () => {
         {emojis.map((t, i) => {
           return (
             <>
-              {i > 0 && <Divider />}
-              <Flex
+              {i > 0}
+              {/* <Flex
                 key={i}
                 w="100%"
                 p={5}
@@ -173,6 +175,66 @@ const Emoji = () => {
                   </Text>
                   <Text>{t}</Text>
                 </Flex>
+                <IconButton
+                  onClick={() => deleteEmoji(t)}
+                  icon={<DeleteIcon />}
+                />
+              </Flex> */}
+              {/* <Stack
+                bg={useColorModeValue("gray.200", "gray.800")}
+                border={useColorModeValue("green.300", "green.700")}
+                id="card"
+                w="100%"
+                p="4"
+                m="4"
+                boxShadow="lg"
+                borderRadius="lg"
+                key={i}
+                // justifyContent="space-between"
+              >
+                <Stack
+                  direction={{ base: "column", md: "row" }}
+                  justifyContent="space-between"
+                >
+                  <Stack direction={{ base: "column", md: "row" }}>
+                    <Text fontWeight="semibold">{t}</Text>
+                  </Stack>
+                  <Stack direction={{ base: "column", md: "row" }}>
+                    <Text
+                      fontSize={{ base: "sm" }}
+                      textAlign={"left"}
+                      maxW={"xl"}
+                    >
+                      Context
+                    </Text>
+                  </Stack>
+                  <Stack direction={{ base: "column", md: "row" }}>
+                    <IconButton
+                      onClick={() => deleteEmoji(t)}
+                      icon={<DeleteIcon />}
+                    />
+                  </Stack>
+                </Stack>
+              </Stack> */}
+              <Flex
+                key={i}
+                w="100%"
+                align="center"
+                borderRadius={5}
+                bg={useColorModeValue("gray.200", "gray.700")}
+                id="card"
+                w="100%"
+                p="4"
+                m="4"
+                boxShadow="lg"
+                borderRadius="lg"
+              >
+                <Text fontWeight="semibold">{t}</Text>
+                <Spacer />
+                <Text fontSize={{ base: "sm" }} maxW={"80%"}>
+                  context
+                </Text>
+                <Spacer />
                 <IconButton
                   onClick={() => deleteEmoji(t)}
                   icon={<DeleteIcon />}
