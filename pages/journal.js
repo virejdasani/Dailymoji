@@ -49,6 +49,29 @@ const Emoji = () => {
         });
   });
 
+  const Today = () => {
+    const monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    const dateObj = new Date();
+    const month = monthNames[dateObj.getMonth()];
+    const day = String(dateObj.getDate()).padStart(2, "0");
+    const year = dateObj.getFullYear();
+    const today = month + "\n" + day + ", " + year;
+    return today;
+  };
+
   // called on 'add emoji' button press
   const sendData = () => {
     // make the input empty when the button is pressed
@@ -87,10 +110,13 @@ const Emoji = () => {
       {/* navbar */}
       <Box
         id="navbar"
-        bg={useColorModeValue("gray.100", "gray.900")}
+        position="fixed"
+        bg={useColorModeValue("gray.100", "gray.800")}
         px={4}
         borderBottom="1px"
         borderColor={useColorModeValue("gray.200", "gray.700")}
+        w="100%"
+        backdropFilter="saturate(180%) blur(5px)"
       >
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <Button variant={"solid"} colorScheme={"teal"} size={"sm"}>
@@ -137,10 +163,12 @@ const Emoji = () => {
         align="center"
         // justify="center"
         minH="100vh"
-        m="auto"
+        mx="auto"
         px={4}
+        id="main"
       >
-        <InputGroup>
+        <Heading id="dateText">{Today()}</Heading>
+        <InputGroup mt={8}>
           <InputLeftElement
             pointerEvents="none"
             children={<AddIcon color="gray.300" />}
@@ -155,7 +183,6 @@ const Emoji = () => {
             Add Emoji
           </Button>
         </InputGroup>
-
         {emojis.map((t, i) => {
           return (
             <>

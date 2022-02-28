@@ -24,6 +24,10 @@ a {
   font-family: 'Poppins', sans-serif;
 }
 
-#card {
-  /* border: 1px solid #e6e6e6; */
+#navbar {
+  z-index: 999;
+}
+
+#dateText {
+  margin-top: 80px;
 }
