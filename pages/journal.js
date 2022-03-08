@@ -173,23 +173,26 @@ const Emoji = () => {
         <Heading id="dateText">{Today()}</Heading>
 
         <InputGroup mt={8}>
-          <InputLeftElement
+          {/* <InputLeftElement
             pointerEvents="none"
             children={<AddIcon color="gray.300" />}
-          />
-          <Input
+          /> */}
+          {/* <Input
             id="emojiInput"
             type="text"
             onChange={(e) => setInput(e.target.value)}
             placeholder="Add emoji"
-          />
-
-          <EmojiPanel />
+          /> */}
 
           {/* <Button ml={2} onClick={() => sendData()}>
             Add Emoji
           </Button> */}
         </InputGroup>
+
+        <Flex position="absolute" bottom="50">
+          <EmojiPanel />
+        </Flex>
+
         {emojis.map((t, i) => {
           return (
             <>

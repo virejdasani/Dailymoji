@@ -16,7 +16,7 @@ import {
 export default function EmojiPanel() {
   const availableEmoji1 = ["🎮", "🥘", "💪", "🏐", "📚", "🚗"];
 
-  const availableEmoji2 = ["🎸", "📕", "💼", "🎬"];
+  const availableEmoji2 = ["🎸", "📕", "💼", "🎬", "⚽", "🎨"];
 
   return (
     <Box
@@ -27,28 +27,48 @@ export default function EmojiPanel() {
       borderRadius="xl"
     >
       <HStack spacing="10px">
-        {availableEmoji1.map((emoji) => (
-          <Button variant="ghost" borderRadius={16} width="64px" height="64px">
-            <Text fontSize="5xl">{emoji}</Text>
-          </Button>
-        ))}
-        {/* <Button variant="ghost" borderRadius={16} width="64px" height="64px">
-          <Text fontSize="3xl">+</Text>
-        </Button> */}
-        {/* <Tabs variant="soft-rounded" colorScheme="green">
-          <TabList>
-            <Tab>1</Tab>
-            <Tab>2</Tab>
-          </TabList>
+        <Tabs variant="unstyled">
           <TabPanels>
             <TabPanel>
-              <p>one!</p>
+              {availableEmoji1.map((emoji) => (
+                <Button
+                  variant="ghost"
+                  borderRadius={16}
+                  width="64px"
+                  height="64px"
+                >
+                  <Text fontSize="5xl">{emoji}</Text>
+                </Button>
+              ))}
             </TabPanel>
             <TabPanel>
-              <p>two!</p>
+              {availableEmoji2.map((emoji) => (
+                <Button
+                  variant="ghost"
+                  borderRadius={16}
+                  width="64px"
+                  height="64px"
+                >
+                  <Text fontSize="5xl">{emoji}</Text>
+                </Button>
+              ))}
             </TabPanel>
           </TabPanels>
-        </Tabs> */}
+          <TabList
+            textAlign="center"
+            // center it horizontally
+            justifyContent="center"
+            margin={0}
+            padding="0"
+          >
+            <Tab margin="2" height="1" padding="1" textColor="#C0C0C0">
+              1
+            </Tab>
+            <Tab margin="2" height="1" padding="1" textColor="#C0C0C0">
+              2
+            </Tab>
+          </TabList>
+        </Tabs>
       </HStack>
     </Box>
   );
