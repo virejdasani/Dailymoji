@@ -80,8 +80,10 @@ const Emoji = () => {
       // try to update doc
       firebase
         .firestore()
-        .collection(AuthUser.id) // each user will have their own collection
-        .doc(input) // set the collection name to the input so that we can easily delete it later on
+        // each user gets their own firestore collection
+        .collection(AuthUser.id)
+        // set the collection name to the input so that we can easily delete it later on
+        .doc(input)
         .set({
           emoji: input,
           timestamp: firebase.firestore.FieldValue.serverTimestamp(),
@@ -191,10 +193,8 @@ const Emoji = () => {
                 key={i}
                 w="100%"
                 align="center"
-                borderRadius={5}
                 bg={useColorModeValue("gray.200", "gray.700")}
                 id="card"
-                w="100%"
                 p="4"
                 m="4"
                 boxShadow="lg"
