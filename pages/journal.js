@@ -16,7 +16,6 @@ import {
   Avatar,
   useColorModeValue,
 } from "@chakra-ui/react";
-import DarkModeSwitch from "../components/DarkModeSwitch";
 import {
   useAuthUser,
   withAuthUser,
@@ -32,6 +31,8 @@ import {
 } from "@chakra-ui/icons";
 import firebase from "firebase/app";
 import "firebase/firestore";
+import DarkModeSwitch from "../components/DarkModeSwitch";
+import EmojiPanel from "../components/EmojiPanel";
 
 const Emoji = () => {
   const AuthUser = useAuthUser();
@@ -170,6 +171,7 @@ const Emoji = () => {
         id="main"
       >
         <Heading id="dateText">{Today()}</Heading>
+
         <InputGroup mt={8}>
           <InputLeftElement
             pointerEvents="none"
@@ -181,9 +183,12 @@ const Emoji = () => {
             onChange={(e) => setInput(e.target.value)}
             placeholder="Add emoji"
           />
-          <Button ml={2} onClick={() => sendData()}>
+
+          <EmojiPanel />
+
+          {/* <Button ml={2} onClick={() => sendData()}>
             Add Emoji
-          </Button>
+          </Button> */}
         </InputGroup>
         {emojis.map((t, i) => {
           return (
