@@ -39,9 +39,10 @@ const Emoji = () => {
   const AuthUser = useAuthUser();
   const [context, setContext] = useState("");
   const [emojis, setEmojis] = useState([]);
+  const [timeID, setTimeID] = useState([]);
 
   const firebaseDocPrototype = {
-    emoji: "🥘",
+    // emoji: "🥘",
     context: "ate a banana for breakfast",
     timestamp: "1/1/2020",
   };
@@ -61,6 +62,7 @@ const Emoji = () => {
         .orderBy("timestamp", "desc")
         .onSnapshot((snapshot) => {
           setEmojis(snapshot.docs.map((doc) => doc.data().emoji));
+          setTimeID(snapshot.docs.map((doc) => doc.data().timeID));
         });
   });
 
@@ -89,8 +91,8 @@ const Emoji = () => {
 
   // called on 'add emoji' button press
   // The time acts like a unique identifier for each emoji
-  const sendData = (emoji) => {
-    const timeID = getTimeID();
+  const sendData = (emoji, timeID) => {
+    // const timeID = getTimeID();
     console.log(emoji, timeID);
     try {
       // try to update doc
@@ -113,6 +115,7 @@ const Emoji = () => {
   };
 
   const deleteEmoji = (t) => {
+    console.log("deleting", t);
     try {
       firebase
         .firestore()
@@ -212,31 +215,14 @@ const Emoji = () => {
 
         {emojis.map((t, i) => {
           return (
-            <>
-              {i > 0}
-              <Flex
-                key={i}
-                w="100%"
-                align="center"
-                bg={useColorModeValue("gray.200", "gray.700")}
-                id="card"
-                p="4"
-                m="4"
-                boxShadow="lg"
-                borderRadius="lg"
-              >
-                <Text fontWeight="semibold">{t}</Text>
-                <Spacer />
-                <Text fontSize={{ base: "sm" }} maxW={"80%"}>
-                  context
-                </Text>
-                <Spacer />
-                <IconButton
-                  onClick={() => deleteEmoji(t)}
-                  icon={<DeleteIcon />}
-                />
-              </Flex>
-            </>
+            <EmojiCard
+              key={i}
+              t={t}
+              i={i}
+              // this is required to be passed so it can be linked to the delete icon on every EmojiCard
+              timeID={timeID[i]}
+              deleteEmoji={deleteEmoji}
+            />
           );
         })}
       </Flex>

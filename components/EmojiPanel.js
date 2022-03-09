@@ -36,7 +36,10 @@ export default function EmojiPanel({ sendData, getTimeID }) {
                   borderRadius={16}
                   width="64px"
                   height="64px"
-                  onClick={() => sendData(emoji, () => getTimeID())}
+                  onClick={() => {
+                    const timeID = getTimeID();
+                    sendData(emoji, timeID);
+                  }}
                   key={index}
                 >
                   <Text fontSize="5xl">{emoji}</Text>
