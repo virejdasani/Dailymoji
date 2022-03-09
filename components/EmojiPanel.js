@@ -13,7 +13,7 @@ import {
   TabPanel,
 } from "@chakra-ui/react";
 
-export default function EmojiPanel() {
+export default function EmojiPanel({ sendData, getTimeID }) {
   const availableEmoji1 = ["🎮", "🥘", "💪", "🏐", "📚", "🚗"];
 
   const availableEmoji2 = ["🎸", "📕", "💼", "🎬", "⚽", "🎨"];
@@ -30,24 +30,28 @@ export default function EmojiPanel() {
         <Tabs variant="unstyled">
           <TabPanels>
             <TabPanel>
-              {availableEmoji1.map((emoji) => (
+              {availableEmoji1.map((emoji, index) => (
                 <Button
                   variant="ghost"
                   borderRadius={16}
                   width="64px"
                   height="64px"
+                  onClick={() => sendData(emoji, () => getTimeID())}
+                  key={index}
                 >
                   <Text fontSize="5xl">{emoji}</Text>
                 </Button>
               ))}
             </TabPanel>
             <TabPanel>
-              {availableEmoji2.map((emoji) => (
+              {availableEmoji2.map((emoji, index) => (
                 <Button
                   variant="ghost"
                   borderRadius={16}
                   width="64px"
                   height="64px"
+                  onClick={() => sendData(emoji)}
+                  key={index}
                 >
                   <Text fontSize="5xl">{emoji}</Text>
                 </Button>
@@ -56,7 +60,6 @@ export default function EmojiPanel() {
           </TabPanels>
           <TabList
             textAlign="center"
-            // center it horizontally
             justifyContent="center"
             margin={0}
             padding="0"

@@ -33,11 +33,25 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 import DarkModeSwitch from "../components/DarkModeSwitch";
 import EmojiPanel from "../components/EmojiPanel";
+import EmojiCard from "../components/EmojiCard";
 
 const Emoji = () => {
   const AuthUser = useAuthUser();
-  const [input, setInput] = useState("");
+  const [context, setContext] = useState("");
   const [emojis, setEmojis] = useState([]);
+
+  const firebaseDocPrototype = {
+    emoji: "🥘",
+    context: "ate a banana for breakfast",
+    timestamp: "1/1/2020",
+  };
+
+  const getTimeID = () => {
+    // This gets us the timeID for when an emoji is pressed for easily identifying the emoji and context
+    // This gets is the time in seconds
+    const seconds = Math.floor(Date.now() / 1000);
+    return seconds.toString();
+  };
 
   useEffect(() => {
     AuthUser.id &&
@@ -74,19 +88,22 @@ const Emoji = () => {
   };
 
   // called on 'add emoji' button press
-  const sendData = () => {
-    // make the input empty when the button is pressed
-    document.getElementById("emojiInput").value = "";
+  // The time acts like a unique identifier for each emoji
+  const sendData = (emoji) => {
+    const timeID = getTimeID();
+    console.log(emoji, timeID);
     try {
       // try to update doc
       firebase
         .firestore()
         // each user gets their own firestore collection
         .collection(AuthUser.id)
-        // set the collection name to the input so that we can easily delete it later on
-        .doc(input)
+        // set the collection name to the timeID which is unique to when an emoji is pressed so that we can easily delete it later on
+        .doc(timeID)
         .set({
-          emoji: input,
+          emoji: emoji,
+          // context: context,
+          timeID: timeID,
           timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         })
         .then(console.log("Data was successfully sent to cloud firestore!"));
@@ -190,7 +207,7 @@ const Emoji = () => {
         </InputGroup>
 
         <Flex position="absolute" bottom="50">
-          <EmojiPanel />
+          <EmojiPanel sendData={sendData} getTimeID={getTimeID} />
         </Flex>
 
         {emojis.map((t, i) => {
