@@ -61,10 +61,20 @@ export default function EmojiPanel() {
             margin={0}
             padding="0"
           >
-            <Tab margin="2" height="1" padding="1" textColor="#C0C0C0">
+            <Tab
+              margin="2"
+              height="1"
+              padding="1"
+              textColor={useColorModeValue("#a0a0a0", "#C0C0C0")}
+            >
               1
             </Tab>
-            <Tab margin="2" height="1" padding="1" textColor="#C0C0C0">
+            <Tab
+              margin="2"
+              height="1"
+              padding="1"
+              textColor={useColorModeValue("#a0a0a0", "#C0C0C0")}
+            >
               2
             </Tab>
           </TabList>
