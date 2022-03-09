@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Text,
   Button,
@@ -6,10 +6,25 @@ import {
   Flex,
   Spacer,
   IconButton,
+  InputGroup,
+  InputLeftElement,
+  Input,
+  Stack,
+  Divider,
 } from "@chakra-ui/react";
 import { DeleteIcon } from "@chakra-ui/icons";
 
-export default function EmojiCard({ t, i, deleteEmoji, timeID }) {
+export default function EmojiCard({
+  t,
+  i,
+  deleteEmoji,
+  timeID,
+  sendData,
+  sendContextData,
+  context,
+}) {
+  const [input, setInput] = useState("");
+
   return (
     <>
       {i > 0}
@@ -27,22 +42,17 @@ export default function EmojiCard({ t, i, deleteEmoji, timeID }) {
         <Text fontWeight="semibold">{t}</Text>
         <Spacer />
         <Text fontSize={{ base: "sm" }} maxW={"80%"}>
-          {/* <InputGroup mt={8}>
-            <InputLeftElement
-              pointerEvents="none"
-              children={<AddIcon color="gray.300" />}
-            />
-            <Input
-              id="emojiInput"
-              type="text"
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Add emoji"
-            />
-
-            <Button ml={2} onClick={() => sendData()}>
-              Add Emoji
-            </Button>
-          </InputGroup> */}
+          <Input
+            id="emojiContextInput"
+            type="text"
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Add context"
+            // value={context}
+            value={input}
+          />
+          <Button ml={2} onClick={() => sendContextData(input, timeID)}>
+            Save
+          </Button>
         </Text>
         <Spacer />
         <IconButton onClick={() => deleteEmoji(timeID)} icon={<DeleteIcon />} />

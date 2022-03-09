@@ -37,9 +37,9 @@ import EmojiCard from "../components/EmojiCard";
 
 const Emoji = () => {
   const AuthUser = useAuthUser();
-  const [context, setContext] = useState("");
   const [emojis, setEmojis] = useState([]);
   const [timeID, setTimeID] = useState([]);
+  const [context, setContext] = useState([]);
 
   const firebaseDocPrototype = {
     // emoji: "🥘",
@@ -63,6 +63,7 @@ const Emoji = () => {
         .onSnapshot((snapshot) => {
           setEmojis(snapshot.docs.map((doc) => doc.data().emoji));
           setTimeID(snapshot.docs.map((doc) => doc.data().timeID));
+          setContext(snapshot.docs.map((doc) => doc.data().context));
         });
   });
 
@@ -104,11 +105,28 @@ const Emoji = () => {
         .doc(timeID)
         .set({
           emoji: emoji,
-          // context: context,
+          // context: input,
           timeID: timeID,
           timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         })
         .then(console.log("Data was successfully sent to cloud firestore!"));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const sendContextData = (input, timeID) => {
+    console.log("contexting", timeID, input);
+    setContext(input);
+    try {
+      firebase
+        .firestore()
+        .collection(AuthUser.id)
+        .doc(timeID)
+        .update({
+          context: input,
+        })
+        .then(console.log("Context was successfully set!"));
     } catch (error) {
       console.log(error);
     }
@@ -192,24 +210,7 @@ const Emoji = () => {
       >
         <Heading id="dateText">{Today()}</Heading>
 
-        <InputGroup mt={8}>
-          {/* <InputLeftElement
-            pointerEvents="none"
-            children={<AddIcon color="gray.300" />}
-          /> */}
-          {/* <Input
-            id="emojiInput"
-            type="text"
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Add emoji"
-          /> */}
-
-          {/* <Button ml={2} onClick={() => sendData()}>
-            Add Emoji
-          </Button> */}
-        </InputGroup>
-
-        <Flex position="absolute" bottom="50">
+        <Flex position="fixed" bottom="30px" zIndex={9}>
           <EmojiPanel sendData={sendData} getTimeID={getTimeID} />
         </Flex>
 
@@ -222,6 +223,9 @@ const Emoji = () => {
               // this is required to be passed so it can be linked to the delete icon on every EmojiCard
               timeID={timeID[i]}
               deleteEmoji={deleteEmoji}
+              context={context[i]}
+              sendData={sendData}
+              sendContextData={sendContextData}
             />
           );
         })}
