@@ -65,7 +65,7 @@ const Emoji = () => {
           setTimeID(snapshot.docs.map((doc) => doc.data().timeID));
           setContext(snapshot.docs.map((doc) => doc.data().context));
         });
-  });
+  }, [emojis]);
 
   const Today = () => {
     const monthNames = [
