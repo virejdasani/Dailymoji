@@ -34,12 +34,14 @@ export default function EmojiCard({
         align="center"
         bg={useColorModeValue("gray.200", "gray.700")}
         id="card"
-        p="4"
+        // p="4"
         m="4"
         boxShadow="lg"
         borderRadius="lg"
       >
-        <Text fontWeight="semibold">{t}</Text>
+        <Text fontSize="6xl" m="4">
+          {t}
+        </Text>
         <Spacer />
 
         <Input
@@ -47,19 +49,25 @@ export default function EmojiCard({
           type="text"
           onChange={(e) => setInput(e.target.value)}
           placeholder="Add context"
-          value={input}
-          maxW={"35%"}
+          // If there is not context set, then the input should be shown
+          value={context || input}
+          maxW={"50%"}
         />
         <Button ml={2} onClick={() => sendContextData(input, timeID)}>
           Save
         </Button>
-        <Spacer />
 
-        <Text fontSize={{ base: "sm" }} width="20%" textAlign="center">
-          {context}
-        </Text>
+        {/* This is only for debugging */}
+        {/* <Text fontSize={{ base: "sm" }} width="20%" textAlign="center">
+          {context || "No Context"}
+        </Text> */}
+
         <Spacer />
-        <IconButton onClick={() => deleteEmoji(timeID)} icon={<DeleteIcon />} />
+        <IconButton
+          m="4"
+          onClick={() => deleteEmoji(timeID)}
+          icon={<DeleteIcon />}
+        />
       </Flex>
     </>
   );
