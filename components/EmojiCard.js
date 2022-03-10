@@ -41,18 +41,22 @@ export default function EmojiCard({
       >
         <Text fontWeight="semibold">{t}</Text>
         <Spacer />
-        <Text fontSize={{ base: "sm" }} maxW={"80%"}>
-          <Input
-            id="emojiContextInput"
-            type="text"
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Add context"
-            // value={context}
-            value={input}
-          />
-          <Button ml={2} onClick={() => sendContextData(input, timeID)}>
-            Save
-          </Button>
+
+        <Input
+          id="emojiContextInput"
+          type="text"
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Add context"
+          value={input}
+          maxW={"35%"}
+        />
+        <Button ml={2} onClick={() => sendContextData(input, timeID)}>
+          Save
+        </Button>
+        <Spacer />
+
+        <Text fontSize={{ base: "sm" }} width="20%" textAlign="center">
+          {context}
         </Text>
         <Spacer />
         <IconButton onClick={() => deleteEmoji(timeID)} icon={<DeleteIcon />} />
