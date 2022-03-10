@@ -40,7 +40,6 @@ const Emoji = () => {
   const [emojis, setEmojis] = useState([]);
   const [timeID, setTimeID] = useState([]);
   const [context, setContext] = useState([]);
-  const [timestamp, setTimestamp] = useState([]);
 
   const firebaseDocPrototype = {
     // emoji: "🥘",
@@ -65,9 +64,6 @@ const Emoji = () => {
           setEmojis(snapshot.docs.map((doc) => doc.data().emoji));
           setTimeID(snapshot.docs.map((doc) => doc.data().timeID));
           setContext(snapshot.docs.map((doc) => doc.data().context));
-          setTimestamp(
-            snapshot.docs.map((doc) => doc.data().timestamp.seconds)
-          );
         });
   });
 
@@ -109,6 +105,7 @@ const Emoji = () => {
         .doc(timeID)
         .set({
           emoji: emoji,
+          // context: input,
           timeID: timeID,
           timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         })
@@ -229,7 +226,6 @@ const Emoji = () => {
               context={context[i]}
               sendData={sendData}
               sendContextData={sendContextData}
-              timestamp={timestamp[i]}
             />
           );
         })}
