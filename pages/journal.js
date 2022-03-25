@@ -3,18 +3,23 @@ import {
   Flex,
   Heading,
   Box,
-  InputGroup,
-  InputLeftElement,
-  Input,
   Button,
   Text,
   IconButton,
   Stack,
-  Divider,
   Spacer,
   Menu,
   Avatar,
   useColorModeValue,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+  Link,
 } from "@chakra-ui/react";
 import {
   useAuthUser,
@@ -41,11 +46,8 @@ const Emoji = () => {
   const [timeID, setTimeID] = useState([]);
   const [context, setContext] = useState([]);
 
-  const firebaseDocPrototype = {
-    // emoji: "🥘",
-    context: "ate a banana for breakfast",
-    timestamp: "1/1/2020",
-  };
+  // For modal
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const getTimeID = () => {
     // This gets us the timeID for when an emoji is pressed for easily identifying the emoji and context
@@ -173,11 +175,33 @@ const Emoji = () => {
                   <DarkModeSwitch />
                   <IconButton
                     ml={2}
-                    // onClick={
-                    //    TODO - open a modal with info like app developers
-                    // }
+                    onClick={onOpen}
                     icon={<QuestionOutlineIcon />}
                   />
+                  <Modal isOpen={isOpen} onClose={onClose}>
+                    <ModalOverlay />
+                    <ModalContent>
+                      <ModalHeader>
+                        Dailymoji is developed by{" "}
+                        <Link href="https://virejdasani.github.io/">
+                          Virej Dasani
+                        </Link>
+                      </ModalHeader>
+                      <ModalCloseButton />
+                      <ModalBody>
+                        Check it out on GitHub{" "}
+                        <Link href="https://github.com/virejdasani/Dailymoji">
+                          here
+                        </Link>
+                      </ModalBody>
+
+                      <ModalFooter>
+                        <Button colorScheme="blue" mr={3} onClick={onClose}>
+                          Close
+                        </Button>
+                      </ModalFooter>
+                    </ModalContent>
+                  </Modal>
                   <IconButton
                     ml={2}
                     onClick={AuthUser.signOut}
