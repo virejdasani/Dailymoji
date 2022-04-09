@@ -15,11 +15,10 @@ import {
 import { DeleteIcon } from "@chakra-ui/icons";
 
 export default function EmojiCard({
-  t,
+  emoji,
   i,
   deleteEmoji,
   timeID,
-  sendData,
   sendContextData,
   context,
 }) {
@@ -40,7 +39,7 @@ export default function EmojiCard({
         borderRadius="lg"
       >
         <Text fontSize="6xl" m="4">
-          {t}
+          {emoji}
         </Text>
         <Spacer />
 

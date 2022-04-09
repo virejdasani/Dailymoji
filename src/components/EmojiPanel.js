@@ -13,7 +13,7 @@ import {
   TabPanel,
 } from "@chakra-ui/react";
 
-export default function EmojiPanel({ sendData, getTimeID }) {
+export default function EmojiPanel({ sendEmojiData }) {
   const availableEmoji1 = ["🎮", "🥘", "💪", "🏐", "📚", "🚗"];
   const availableEmoji2 = ["🎸", "📕", "💼", "🎬", "⚽", "🎨"];
 
@@ -36,8 +36,7 @@ export default function EmojiPanel({ sendData, getTimeID }) {
                   width="64px"
                   height="64px"
                   onClick={() => {
-                    const timeID = getTimeID();
-                    sendData(emoji, timeID);
+                    sendEmojiData(emoji);
                   }}
                   key={index}
                 >
@@ -53,8 +52,7 @@ export default function EmojiPanel({ sendData, getTimeID }) {
                   width="64px"
                   height="64px"
                   onClick={() => {
-                    const timeID = getTimeID();
-                    sendData(emoji, timeID);
+                    sendEmojiData(emoji);
                   }}
                   key={index}
                 >
