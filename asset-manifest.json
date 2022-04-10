@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Dailymoji/static/css/main.bd44ea64.css",
-    "main.js": "/Dailymoji/static/js/main.b2e55703.js",
+    "main.css": "/Dailymoji/static/css/main.246c54bf.css",
+    "main.js": "/Dailymoji/static/js/main.4733be3e.js",
     "index.html": "/Dailymoji/index.html",
-    "main.bd44ea64.css.map": "/Dailymoji/static/css/main.bd44ea64.css.map",
-    "main.b2e55703.js.map": "/Dailymoji/static/js/main.b2e55703.js.map"
+    "main.246c54bf.css.map": "/Dailymoji/static/css/main.246c54bf.css.map",
+    "main.4733be3e.js.map": "/Dailymoji/static/js/main.4733be3e.js.map"
   },
   "entrypoints": [
-    "static/css/main.bd44ea64.css",
-    "static/js/main.b2e55703.js"
+    "static/css/main.246c54bf.css",
+    "static/js/main.4733be3e.js"
   ]
 }
