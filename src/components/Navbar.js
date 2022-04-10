@@ -87,11 +87,18 @@ function Navbar({ username, auth, user, logout, singInWithGoogle }) {
                     </ModalFooter>
                   </ModalContent>
                 </Modal>
-                <IconButton
-                  ml={2}
-                  // onClick={AuthUser.signOut}
-                  icon={<ExternalLinkIcon />}
-                />
+
+                {auth.currentUser && auth.currentUser.displayName ? (
+                  <>
+                    <IconButton
+                      ml={2}
+                      onClick={logout}
+                      icon={<ExternalLinkIcon />}
+                    />
+                  </>
+                ) : (
+                  ""
+                )}
               </Flex>
             </Flex>
 

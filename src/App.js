@@ -180,18 +180,24 @@ function App() {
             px={4}
             mt={20}
           >
-            <Button
-              variant="outlined"
-              onClick={user ? logout : singInWithGoogle}
-              color="inherit"
-              p
-            >
+            <button onClick={user ? logout : singInWithGoogle}>
               {auth.currentUser && auth.currentUser.displayName ? (
                 <p>Logout</p>
               ) : (
-                <p>Login with Google</p>
+                <>
+                  <div class="google-btn">
+                    <img
+                      className="google-icon-svg"
+                      alt="google button"
+                      src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+                    />
+                    <p className="btn-text">
+                      <b>Sign in with Google</b>
+                    </p>
+                  </div>
+                </>
               )}
-            </Button>
+            </button>
           </Flex>
         </>
       )}
