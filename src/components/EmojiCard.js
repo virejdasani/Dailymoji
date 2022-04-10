@@ -47,8 +47,8 @@ export default function EmojiCard({
           type="text"
           onChange={(e) => setInput(e.target.value)}
           placeholder="Add context"
-          // If there is not context set, then the input should be shown
-          value={emojiContext || input}
+          // If there is not context set, then the input will be shown = ""
+          value={input || emojiContext}
           maxW={"50%"}
         />
         <Button ml={2} onClick={() => sendContextData(input, id)}>
