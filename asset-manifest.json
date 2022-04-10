@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Dailymoji/static/css/main.bd44ea64.css",
+    "main.js": "/Dailymoji/static/js/main.1c346379.js",
+    "index.html": "/Dailymoji/index.html",
+    "main.bd44ea64.css.map": "/Dailymoji/static/css/main.bd44ea64.css.map",
+    "main.1c346379.js.map": "/Dailymoji/static/js/main.1c346379.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bd44ea64.css",
+    "static/js/main.1c346379.js"
+  ]
+}
