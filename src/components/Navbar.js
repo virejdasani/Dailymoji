@@ -33,7 +33,7 @@ import {
 } from "@chakra-ui/icons";
 import DarkModeSwitch from "../components/DarkModeSwitch";
 
-function Navbar() {
+function Navbar({ username, auth, user, logout, singInWithGoogle }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -52,9 +52,7 @@ function Navbar() {
           dailymoji
         </Box>
 
-        <Heading id="welcomeText">
-          {/* {"Welcome back, " + AuthUser.displayName} */}
-        </Heading>
+        <Heading id="welcomeText">{username}</Heading>
         <Flex alignItems={"center"}>
           <Menu>
             <Flex justify="space-between" w="100%" align="center">
@@ -118,10 +116,23 @@ function Navbar() {
                   />
                 </MenuButton>
                 <MenuList>
-                  <MenuItem>Link 1</MenuItem>
-                  <MenuItem>Link 2</MenuItem>
+                  <MenuItem>
+                    <Button
+                      variant="outlined"
+                      onClick={user ? logout : singInWithGoogle}
+                      color="inherit"
+                      p
+                    >
+                      {auth.currentUser && auth.currentUser.displayName ? (
+                        <p>Logout</p>
+                      ) : (
+                        <p>Login with Google</p>
+                      )}
+                    </Button>
+                  </MenuItem>
+                  {/* <MenuItem>Link 2</MenuItem>
                   <MenuDivider />
-                  <MenuItem>Link 3</MenuItem>
+                  <MenuItem>Link 3</MenuItem> */}
                 </MenuList>
               </Menu>
             </Flex>

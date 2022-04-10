@@ -20,7 +20,7 @@ export default function EmojiPanel({ sendEmojiData }) {
   return (
     <Box
       padding={2}
-      bg={useColorModeValue("gray.200", "#1A2232")}
+      bg={useColorModeValue("#E2E8F0bb", "#1A2239bb")}
       borderColor={useColorModeValue("gray.300", "#263553")}
       borderWidth="1px"
       borderRadius="xl"

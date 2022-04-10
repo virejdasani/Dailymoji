@@ -1,7 +1,7 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
 import React, { useState, useEffect } from "react";
-import { Flex, Box, Button, Text } from "@chakra-ui/react";
+import { Flex, Box, Button, Text, Heading } from "@chakra-ui/react";
 import EmojiCard from "./components/EmojiCard";
 import EmojiPanel from "./components/EmojiPanel";
 import { auth, db, singInWithGoogle, logout } from "./firebase";
@@ -85,20 +85,46 @@ function App() {
     }
   };
 
+  const Today = () => {
+    const monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    const dateObj = new Date();
+    const month = monthNames[dateObj.getMonth()];
+    const day = String(dateObj.getDate()).padStart(2, "0");
+    const year = dateObj.getFullYear();
+    const today = month + "\n" + day + ", " + year;
+    return today;
+  };
+
   return (
     <div className="App">
       <Flex>
-        <Navbar />
+        <Navbar
+          username={
+            auth.currentUser && auth.currentUser.displayName
+              ? "Welcome back, " + auth?.currentUser.displayName
+              : ""
+          }
+          user={user}
+          logout={logout}
+          singInWithGoogle={singInWithGoogle}
+          auth={auth}
+        />
       </Flex>
-
+      {/* auth.currentUser ? () : () */}
       <Flex flexDir="column" maxW={800} align="center" mx="auto" px={4} mt={20}>
-        <Text>
-          {auth.currentUser && auth.currentUser.displayName ? (
-            <p>Welcome, {auth.currentUser.displayName}</p>
-          ) : (
-            <p></p>
-          )}
-        </Text>
         <Button
           variant="outlined"
           onClick={user ? logout : singInWithGoogle}
@@ -112,7 +138,17 @@ function App() {
           )}
         </Button>
       </Flex>
-
+      <Flex
+        flexDir="column"
+        maxW={800}
+        align="center"
+        mx="auto"
+        px={4}
+        mt={6}
+        mb={4}
+      >
+        <Heading id="dateText">{Today()}</Heading>
+      </Flex>
       <Flex flexDir="column" maxW={800} align="center" mx="auto" px={4}>
         {emojiData.map((emoji, index) => (
           <EmojiCard
@@ -124,7 +160,6 @@ function App() {
           />
         ))}
       </Flex>
-
       {/* {emojis.map((t, i) => {
         return (
           <EmojiCard
@@ -140,7 +175,6 @@ function App() {
           />
         );
       })} */}
-
       <Flex
         flexDir="column"
         maxW={800}
