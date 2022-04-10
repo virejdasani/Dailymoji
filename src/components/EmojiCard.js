@@ -19,15 +19,13 @@ export default function EmojiCard({
   i,
   deleteEmoji,
   id,
-  timeID,
   sendContextData,
-  context,
+  emojiContext,
 }) {
   const [input, setInput] = useState("");
 
   return (
     <>
-      {i > 0}
       <Flex
         key={i}
         w="100%"
@@ -50,10 +48,10 @@ export default function EmojiCard({
           onChange={(e) => setInput(e.target.value)}
           placeholder="Add context"
           // If there is not context set, then the input should be shown
-          value={context || input}
+          value={emojiContext || input}
           maxW={"50%"}
         />
-        <Button ml={2} onClick={() => sendContextData(input, timeID)}>
+        <Button ml={2} onClick={() => sendContextData(input, id)}>
           Save
         </Button>
 

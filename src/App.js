@@ -76,6 +76,13 @@ function App() {
     });
   };
 
+  const sendContextData = (context, id) => {
+    console.log("sending", context, id);
+    db.collection(auth.currentUser.uid).doc(id).update({
+      emojiContext: context,
+    });
+  };
+
   const deleteEmoji = (id) => {
     try {
       db.collection(auth.currentUser.uid).doc(id).delete();
@@ -146,6 +153,7 @@ function App() {
                 key={emoji.id}
                 id={emoji.id}
                 deleteEmoji={deleteEmoji}
+                sendContextData={sendContextData}
               />
             ))}
           </Flex>
