@@ -11,23 +11,25 @@ import {
   Input,
   Stack,
   Divider,
+  VStack,
+  HStack,
 } from "@chakra-ui/react";
 import { DeleteIcon } from "@chakra-ui/icons";
+import moment from "moment";
 
 export default function EmojiCard({
   emoji,
-  i,
   deleteEmoji,
   id,
   sendContextData,
   emojiContext,
+  timestamp,
 }) {
   const [input, setInput] = useState("");
 
   return (
     <>
       <Flex
-        key={i}
         w="100%"
         align="center"
         bg={useColorModeValue("gray.200", "gray.700")}
@@ -40,27 +42,29 @@ export default function EmojiCard({
         <Text fontSize="6xl" m="4">
           {emoji}
         </Text>
-        <Spacer />
 
-        <Input
-          id="emojiContextInput"
-          type="text"
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Add context"
-          // If there is not context set, then the input will be shown = ""
-          value={input || emojiContext}
-          maxW={"50%"}
-        />
-        <Button ml={2} onClick={() => sendContextData(input, id)}>
-          Save
-        </Button>
+        <VStack width="100%">
+          <Text width="85%" color="#CCCCCC" textAlign="left" fontSize="sm">
+            {moment(timestamp).format("l") +
+              " at " +
+              moment(timestamp).format("LT")}
+          </Text>
 
-        {/* This is only for debugging */}
-        {/* <Text fontSize={{ base: "sm" }} width="20%" textAlign="center">
-          {context || "No Context"}
-        </Text> */}
+          <HStack width="85%">
+            <Input
+              id="emojiContextInput"
+              type="text"
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="Add context"
+              // If there is not context set, then the input will be shown = ""
+              value={input || emojiContext}
+            />
+            <Button ml={2} onClick={() => sendContextData(input, id)}>
+              Save
+            </Button>
+          </HStack>
+        </VStack>
 
-        <Spacer />
         <IconButton
           m="4"
           onClick={() => deleteEmoji(id)}

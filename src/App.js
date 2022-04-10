@@ -157,21 +157,6 @@ function App() {
               />
             ))}
           </Flex>
-          {/* {emojis.map((t, i) => {
-        return (
-          <EmojiCard
-            key={i}
-            t={t}
-            i={i}
-            // this is required to be passed so it can be linked to the delete icon on every EmojiCard
-            timeID={timeID[i]}
-            deleteEmoji={deleteEmoji}
-            context={context[i]}
-            sendData={sendData}
-            sendContextData={sendContextData}
-          />
-        );
-      })} */}
           <Flex flexDir="column" maxW={800} align="center" mx="auto" px={4}>
             <Flex position="fixed" bottom="30px" zIndex={9}>
               <EmojiPanel sendEmojiData={sendEmojiData} />
@@ -193,7 +178,7 @@ function App() {
                 <p>Logout</p>
               ) : (
                 <>
-                  <div class="google-btn">
+                  <div className="google-btn">
                     <img
                       className="google-icon-svg"
                       alt="google button"
