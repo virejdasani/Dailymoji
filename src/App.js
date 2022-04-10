@@ -123,44 +123,33 @@ function App() {
           auth={auth}
         />
       </Flex>
-      {/* auth.currentUser ? () : () */}
-      <Flex flexDir="column" maxW={800} align="center" mx="auto" px={4} mt={20}>
-        <Button
-          variant="outlined"
-          onClick={user ? logout : singInWithGoogle}
-          color="inherit"
-          p
-        >
-          {auth.currentUser && auth.currentUser.displayName ? (
-            <p>Logout</p>
-          ) : (
-            <p>Login with Google</p>
-          )}
-        </Button>
-      </Flex>
-      <Flex
-        flexDir="column"
-        maxW={800}
-        align="center"
-        mx="auto"
-        px={4}
-        mt={6}
-        mb={4}
-      >
-        <Heading id="dateText">{Today()}</Heading>
-      </Flex>
-      <Flex flexDir="column" maxW={800} align="center" mx="auto" px={4}>
-        {emojiData.map((emoji, index) => (
-          <EmojiCard
-            emoji={emoji.emoji}
-            emojiContext={emoji.emojiContext}
-            timestamp={emoji.timestamp}
-            key={emoji.id}
-            deleteEmoji={deleteEmoji}
-          />
-        ))}
-      </Flex>
-      {/* {emojis.map((t, i) => {
+
+      {auth.currentUser ? (
+        <>
+          <Flex
+            flexDir="column"
+            maxW={800}
+            align="center"
+            mx="auto"
+            px={4}
+            mt={24}
+            mb={4}
+          >
+            <Heading id="dateText">{Today()}</Heading>
+          </Flex>
+          <Flex flexDir="column" maxW={800} align="center" mx="auto" px={4}>
+            {emojiData.map((emoji, index) => (
+              <EmojiCard
+                emoji={emoji.emoji}
+                emojiContext={emoji.emojiContext}
+                timestamp={emoji.timestamp}
+                key={emoji.id}
+                id={emoji.id}
+                deleteEmoji={deleteEmoji}
+              />
+            ))}
+          </Flex>
+          {/* {emojis.map((t, i) => {
         return (
           <EmojiCard
             key={i}
@@ -175,20 +164,37 @@ function App() {
           />
         );
       })} */}
-      <Flex
-        flexDir="column"
-        maxW={800}
-        align="center"
-        // justify="center"
-        minH="100vh"
-        mx="auto"
-        px={4}
-        id="main"
-      >
-        <Flex position="fixed" bottom="30px" zIndex={9}>
-          <EmojiPanel sendEmojiData={sendEmojiData} />
-        </Flex>
-      </Flex>
+          <Flex flexDir="column" maxW={800} align="center" mx="auto" px={4}>
+            <Flex position="fixed" bottom="30px" zIndex={9}>
+              <EmojiPanel sendEmojiData={sendEmojiData} />
+            </Flex>
+          </Flex>
+        </>
+      ) : (
+        <>
+          <Flex
+            flexDir="column"
+            maxW={800}
+            align="center"
+            mx="auto"
+            px={4}
+            mt={20}
+          >
+            <Button
+              variant="outlined"
+              onClick={user ? logout : singInWithGoogle}
+              color="inherit"
+              p
+            >
+              {auth.currentUser && auth.currentUser.displayName ? (
+                <p>Logout</p>
+              ) : (
+                <p>Login with Google</p>
+              )}
+            </Button>
+          </Flex>
+        </>
+      )}
     </div>
   );
 }

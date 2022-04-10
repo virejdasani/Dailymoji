@@ -18,6 +18,7 @@ export default function EmojiCard({
   emoji,
   i,
   deleteEmoji,
+  id,
   timeID,
   sendContextData,
   context,
@@ -33,10 +34,10 @@ export default function EmojiCard({
         align="center"
         bg={useColorModeValue("gray.200", "gray.700")}
         id="card"
-        // p="4"
+        p="2"
         m="4"
         boxShadow="lg"
-        borderRadius="lg"
+        borderRadius="28px"
       >
         <Text fontSize="6xl" m="4">
           {emoji}
@@ -64,7 +65,7 @@ export default function EmojiCard({
         <Spacer />
         <IconButton
           m="4"
-          onClick={() => deleteEmoji(timeID)}
+          onClick={() => deleteEmoji(id)}
           icon={<DeleteIcon />}
         />
       </Flex>
