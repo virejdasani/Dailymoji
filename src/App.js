@@ -142,7 +142,13 @@ function App() {
             mt={24}
             mb={4}
           >
-            <Heading id="dateText">{Today()}</Heading>
+            <Heading
+              fontFamily="'Work Sans', sans-serif"
+              fontWeight={900}
+              id="dateText"
+            >
+              {Today()}
+            </Heading>
           </Flex>
           <Flex flexDir="column" maxW={800} align="center" mx="auto" px={4}>
             {emojiData.map((emoji, index) => (

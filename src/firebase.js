@@ -25,6 +25,7 @@ const provider = new GoogleAuthProvider();
 const auth = getAuth();
 
 const singInWithGoogle = () => {
+  console.log("signing in with google");
   signInWithPopup(auth, provider)
     .then((result) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
@@ -45,6 +46,7 @@ const singInWithGoogle = () => {
 };
 
 const logout = () => {
+  console.log("loggin out");
   signOut(auth)
     .then(() => {
       // Sign-out successful.

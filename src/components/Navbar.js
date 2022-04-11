@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import {
   Flex,
   Heading,
@@ -7,7 +6,6 @@ import {
   Text,
   IconButton,
   Stack,
-  Spacer,
   Menu,
   Avatar,
   useColorModeValue,
@@ -25,12 +23,7 @@ import {
   MenuItem,
   MenuDivider,
 } from "@chakra-ui/react";
-import {
-  AddIcon,
-  DeleteIcon,
-  ExternalLinkIcon,
-  QuestionOutlineIcon,
-} from "@chakra-ui/icons";
+import { ExternalLinkIcon, QuestionOutlineIcon } from "@chakra-ui/icons";
 import DarkModeSwitch from "../components/DarkModeSwitch";
 
 function Navbar({ username, auth, user, logout, singInWithGoogle }) {
@@ -52,7 +45,9 @@ function Navbar({ username, auth, user, logout, singInWithGoogle }) {
           dailymoji
         </Box>
 
-        <Heading id="welcomeText">{username}</Heading>
+        {/* <Heading id="welcomeText">{username}</Heading> */}
+        {/* Welcome back, Virej Dasani (👆) */}
+
         <Flex alignItems={"center"}>
           <Menu>
             <Flex justify="space-between" w="100%" align="center">
@@ -88,7 +83,7 @@ function Navbar({ username, auth, user, logout, singInWithGoogle }) {
                   </ModalContent>
                 </Modal>
 
-                {auth.currentUser && auth.currentUser.displayName ? (
+                {/* {auth.currentUser && auth.currentUser.displayName ? (
                   <>
                     <IconButton
                       ml={2}
@@ -98,7 +93,7 @@ function Navbar({ username, auth, user, logout, singInWithGoogle }) {
                   </>
                 ) : (
                   ""
-                )}
+                )} */}
               </Flex>
             </Flex>
 
@@ -121,19 +116,19 @@ function Navbar({ username, auth, user, logout, singInWithGoogle }) {
                   />
                 </MenuButton>
                 <MenuList>
-                  <MenuItem>
-                    <Button
-                      variant="outlined"
-                      onClick={user ? logout : singInWithGoogle}
-                      color="inherit"
-                      p
-                    >
-                      {auth.currentUser && auth.currentUser.displayName ? (
-                        <p>Logout</p>
-                      ) : (
-                        <p>Login with Google</p>
-                      )}
-                    </Button>
+                  <MenuItem
+                    onClick={
+                      auth.currentUser && auth.currentUser.displayName
+                        ? logout
+                        : singInWithGoogle
+                    }
+                    color="inherit"
+                  >
+                    {auth.currentUser && auth.currentUser.displayName ? (
+                      <p>Logout</p>
+                    ) : (
+                      <p>Login with Google</p>
+                    )}
                   </MenuItem>
                   {/* <MenuItem>Link 2</MenuItem>
                   <MenuDivider />
