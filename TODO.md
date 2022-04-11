@@ -1,0 +1,1 @@
+- add a 'search your activities' bar
