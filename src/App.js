@@ -1,9 +1,18 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
 import React, { useState, useEffect } from "react";
-import { Flex, Box, Button, Text, Heading } from "@chakra-ui/react";
+import {
+  Flex,
+  Box,
+  Button,
+  Text,
+  Heading,
+  Alert,
+  AlertIcon,
+} from "@chakra-ui/react";
 import EmojiCard from "./components/EmojiCard";
 import EmojiPanel from "./components/EmojiPanel";
+import DisappearingAlert from "./components/DisappearingAlert";
 import { auth, db, singInWithGoogle, logout } from "./firebase";
 
 function App() {
@@ -11,6 +20,19 @@ function App() {
 
   const [user, setUser] = useState(null);
   const [username, setUsername] = useState("");
+
+  const [show, setShow] = useState(true);
+
+  useEffect(() => {
+    const timeId = setTimeout(() => {
+      // After 3 seconds set the show value to false
+      setShow(false);
+    }, 1000);
+
+    return () => {
+      clearTimeout(timeId);
+    };
+  }, [show]);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
@@ -77,10 +99,13 @@ function App() {
   };
 
   const sendContextData = (context, id) => {
-    console.log("sending", context, id);
-    db.collection(auth.currentUser.uid).doc(id).update({
-      emojiContext: context,
-    });
+    if (context) {
+      console.log("sending", context, id);
+      db.collection(auth.currentUser.uid).doc(id).update({
+        emojiContext: context,
+      });
+      setShow(true);
+    }
   };
 
   const deleteEmoji = (id) => {
@@ -130,6 +155,19 @@ function App() {
           auth={auth}
         />
       </Flex>
+
+      {/* test code here */}
+      {show ? (
+        <Flex flexDir="column" maxW={800} align="center" mx="auto" px={4}>
+          <Flex position="fixed" left="10px" top="80px" zIndex={9}>
+            <DisappearingAlert
+              alertText={auth.currentUser ? "Saved!" : "Welcome"}
+            />
+          </Flex>
+        </Flex>
+      ) : (
+        ""
+      )}
 
       {auth.currentUser ? (
         <>
