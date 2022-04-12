@@ -116,6 +116,12 @@ function Navbar({ username, auth, user, logout, singInWithGoogle }) {
                   />
                 </MenuButton>
                 <MenuList>
+                  <MenuItem>
+                    {auth.currentUser && auth.currentUser.displayName
+                      ? "Logged in as" + auth.currentUser.displayName
+                      : "Welcome to Dailymoji!"}
+                  </MenuItem>
+                  <MenuDivider />
                   <MenuItem
                     onClick={
                       auth.currentUser && auth.currentUser.displayName
@@ -130,9 +136,6 @@ function Navbar({ username, auth, user, logout, singInWithGoogle }) {
                       <p>Login with Google</p>
                     )}
                   </MenuItem>
-                  {/* <MenuItem>Link 2</MenuItem>
-                  <MenuDivider />
-                  <MenuItem>Link 3</MenuItem> */}
                 </MenuList>
               </Menu>
             </Flex>
