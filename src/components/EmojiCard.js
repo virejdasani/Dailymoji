@@ -58,6 +58,7 @@ export default function EmojiCard({
           </Text>
 
           <HStack width="95%">
+            {/* TODO: sendContextData when enter is pressed like in a form */}
             <Input
               id="emojiContextInput"
               type="text"
@@ -66,18 +67,25 @@ export default function EmojiCard({
               placeholder="Add context"
               // If there is not context set, then the input will be shown = ""
               value={input || emojiContext}
+              border="none"
+              autoComplete="off"
+              variant="flushed"
+              fontSize="lg"
+              fontWeight={800}
             />
-            {/* <Button ml={2} onClick={() => sendContextData(input, id)}>
-              Save
-            </Button> */}
-            <IconButton
-              m="4"
-              onClick={() => sendContextData(input, id)}
-              colorScheme="blue"
-              variant="outline"
-              icon={<CheckIcon />}
-              ml={2}
-            />
+            {/* when user start typing context, then the checkbox appears */}
+            {input ? (
+              <IconButton
+                m="4"
+                onClick={() => sendContextData(input, id)}
+                colorScheme="blue"
+                variant="ghost"
+                icon={<CheckIcon />}
+                ml={2}
+              />
+            ) : (
+              ""
+            )}
           </HStack>
         </VStack>
 
