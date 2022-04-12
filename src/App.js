@@ -2,15 +2,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import React, { useState, useEffect } from "react";
 import moment from "moment";
-import {
-  Flex,
-  Box,
-  Button,
-  Text,
-  Heading,
-  Alert,
-  AlertIcon,
-} from "@chakra-ui/react";
+import { Flex, Box, Button, Text, Heading, Image } from "@chakra-ui/react";
 import EmojiCard from "./components/EmojiCard";
 import EmojiPanel from "./components/EmojiPanel";
 import DisappearingAlert from "./components/DisappearingAlert";
@@ -208,6 +200,13 @@ function App() {
             mt={20}
           >
             <Landing />
+
+            <img
+              width={"100%"}
+              alt=""
+              src="https://raw.githubusercontent.com/virejdasani/Dailymoji/main/assets/img/dailymoji-macbook-preview.png"
+            ></img>
+
             <button onClick={user ? logout : singInWithGoogle}>
               {auth.currentUser && auth.currentUser.displayName ? (
                 <p>Logout</p>
