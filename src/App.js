@@ -1,6 +1,7 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
 import React, { useState, useEffect } from "react";
+import moment from "moment";
 import {
   Flex,
   Box,
@@ -23,6 +24,7 @@ function App() {
 
   const [show, setShow] = useState(true);
 
+  // this is to show the alert notification when context is set
   useEffect(() => {
     const timeId = setTimeout(() => {
       // After 3 seconds set the show value to false
@@ -34,6 +36,7 @@ function App() {
     };
   }, [show]);
 
+  // this is to get and set the auth user
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
@@ -60,6 +63,7 @@ function App() {
     };
   }, [username, user]);
 
+  // this is to get data from firebase
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
@@ -117,29 +121,6 @@ function App() {
     }
   };
 
-  const Today = () => {
-    const monthNames = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-    const dateObj = new Date();
-    const month = monthNames[dateObj.getMonth()];
-    const day = String(dateObj.getDate()).padStart(2, "0");
-    const year = dateObj.getFullYear();
-    const today = month + "\n" + day + ", " + year;
-    return today;
-  };
-
   return (
     <div className="App">
       <Flex>
@@ -185,7 +166,7 @@ function App() {
               fontWeight={900}
               id="dateText"
             >
-              {Today()}
+              {moment().format("MMMM D, YYYY")}
             </Heading>
           </Flex>
           <Flex flexDir="column" maxW={800} align="center" mx="auto" px={4}>
