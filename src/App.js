@@ -41,7 +41,7 @@ function App() {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         // user logged in
-        console.log(authUser);
+        // console.log(authUser);
         setUser(authUser);
 
         if (authUser.displayName) {
@@ -67,7 +67,7 @@ function App() {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
-        console.log(authUser.displayName);
+        // console.log(authUser.displayName);
 
         db.collection(auth.currentUser.uid)
           .orderBy("timestamp", "desc")
@@ -94,7 +94,7 @@ function App() {
   }, []);
 
   const sendEmojiData = (emoji) => {
-    console.log("sending", emoji);
+    // console.log("sending", emoji);
     db.collection(auth.currentUser.uid).doc().set({
       emoji: emoji,
       emojiContext: "",
@@ -104,7 +104,7 @@ function App() {
 
   const sendContextData = (context, id) => {
     if (context) {
-      console.log("sending", context, id);
+      // console.log("sending", context, id);
       db.collection(auth.currentUser.uid).doc(id).update({
         emojiContext: context,
       });
@@ -115,7 +115,7 @@ function App() {
   const deleteEmoji = (id) => {
     try {
       db.collection(auth.currentUser.uid).doc(id).delete();
-      console.log("deleted", id);
+      // console.log("deleted", id);
     } catch (e) {
       console.log(e);
     }
