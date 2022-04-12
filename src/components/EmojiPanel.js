@@ -26,7 +26,7 @@ export default function EmojiPanel({ sendEmojiData }) {
       borderRadius="xl"
     >
       <HStack spacing="10px">
-        <Tabs variant="unstyled">
+        <Tabs variant="line">
           <TabPanels>
             <TabPanel>
               {availableEmoji1.map((emoji, index) => (
@@ -69,7 +69,8 @@ export default function EmojiPanel({ sendEmojiData }) {
           >
             <Tab
               margin="2"
-              height="1"
+              height={8}
+              width={8}
               padding="1"
               textColor={useColorModeValue("#a0a0a0", "#C0C0C0")}
             >
@@ -77,7 +78,8 @@ export default function EmojiPanel({ sendEmojiData }) {
             </Tab>
             <Tab
               margin="2"
-              height="1"
+              height={8}
+              width={8}
               padding="1"
               textColor={useColorModeValue("#a0a0a0", "#C0C0C0")}
             >
