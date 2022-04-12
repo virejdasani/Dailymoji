@@ -58,6 +58,7 @@ function Navbar({ username, auth, user, logout, singInWithGoogle }) {
                   ml={2}
                   onClick={onOpen}
                   icon={<QuestionOutlineIcon />}
+                  bg={useColorModeValue("gray.100", "gray.800")}
                 />
                 <Modal isOpen={isOpen} onClose={onClose}>
                   <ModalOverlay />

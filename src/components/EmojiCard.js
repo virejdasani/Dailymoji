@@ -50,7 +50,7 @@ export default function EmojiCard({
             textAlign="left"
             fontSize="md"
             fontFamily="'Work Sans', sans-serif"
-            fontWeight="extrabold"
+            fontWeight="normal"
           >
             {moment(timestamp).format("l") +
               " at " +
@@ -71,7 +71,7 @@ export default function EmojiCard({
               autoComplete="off"
               variant="flushed"
               fontSize="lg"
-              fontWeight={800}
+              fontWeight="normal"
             />
             {/* when user start typing context, then the checkbox appears */}
             {input ? (

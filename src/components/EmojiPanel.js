@@ -26,7 +26,7 @@ export default function EmojiPanel({ sendEmojiData }) {
       borderRadius="xl"
     >
       <HStack spacing="10px">
-        <Tabs variant="line">
+        <Tabs variant="">
           <TabPanels>
             <TabPanel>
               {availableEmoji1.map((emoji, index) => (

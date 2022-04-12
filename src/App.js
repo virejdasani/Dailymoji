@@ -14,6 +14,7 @@ import {
 import EmojiCard from "./components/EmojiCard";
 import EmojiPanel from "./components/EmojiPanel";
 import DisappearingAlert from "./components/DisappearingAlert";
+import Landing from "./components/Landing";
 import { auth, db, singInWithGoogle, logout } from "./firebase";
 
 function App() {
@@ -163,8 +164,9 @@ function App() {
           >
             <Heading
               fontFamily="'Work Sans', sans-serif"
-              fontWeight={900}
               id="dateText"
+              fontWeight="400"
+              fontSize={"4xl"}
             >
               {moment().format("MMMM D, YYYY")}
             </Heading>
@@ -205,6 +207,7 @@ function App() {
             px={4}
             mt={20}
           >
+            <Landing />
             <button onClick={user ? logout : singInWithGoogle}>
               {auth.currentUser && auth.currentUser.displayName ? (
                 <p>Logout</p>
