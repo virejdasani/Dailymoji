@@ -23,7 +23,7 @@ export default function CallToActionWithIllustration() {
         textAlign={"center"}
         align={"center"}
         spacing={{ base: 8, md: 10 }}
-        py={{ base: 20, md: 28 }}
+        pt={{ base: 4, md: 8 }}
       >
         <Heading
           fontWeight={600}
@@ -40,10 +40,14 @@ export default function CallToActionWithIllustration() {
             with emoji
           </Text>
         </Heading>
-        <Text color={"gray.500"} fontSize={"lg"} maxW={"3xl"}>
-          Track your activities with emoji, add context later.
+        <Text
+          color={"gray.500"}
+          fontSize={{ base: "md", sm: "lg", md: "2xl" }}
+          maxW={"3xl"}
+        >
+          Track your daily activities with emoji, add context later.
         </Text>
-        <Button
+        {/* <Button
           rounded={"full"}
           size={"lg"}
           fontWeight={"normal"}
@@ -51,23 +55,8 @@ export default function CallToActionWithIllustration() {
           leftIcon={<PlayIcon h={4} w={4} color={"gray.300"} />}
         >
           See how Dailymoji Works
-        </Button>
-        <Stack spacing={6} direction={"row"}>
-          <Button
-            rounded={"full"}
-            px={6}
-            colorScheme={"orange"}
-            bg={"orange.400"}
-            _hover={{ bg: "orange.500" }}
-          >
-            Get started
-          </Button>
-          <Button rounded={"full"} px={6}>
-            Learn more
-          </Button>
-        </Stack>
+        </Button> */}
       </Stack>
-      <Flex w={"full"}></Flex>
     </div>
   );
 }

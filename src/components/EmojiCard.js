@@ -48,7 +48,7 @@ export default function EmojiCard({
             width="95%"
             color={useColorModeValue("gray.700", "gray.200")}
             textAlign="left"
-            fontSize="md"
+            fontSize={["xs", "sm", "md"]}
             fontFamily="'Work Sans', sans-serif"
             fontWeight="normal"
           >

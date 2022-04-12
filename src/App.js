@@ -3,10 +3,13 @@ import Navbar from "./components/Navbar";
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 import { Flex, Box, Button, Text, Heading, Image } from "@chakra-ui/react";
+import { FcGoogle } from "react-icons/fc";
+
 import EmojiCard from "./components/EmojiCard";
 import EmojiPanel from "./components/EmojiPanel";
 import DisappearingAlert from "./components/DisappearingAlert";
 import Landing from "./components/Landing";
+import Landing2 from "./components/Landing2";
 import { auth, db, singInWithGoogle, logout } from "./firebase";
 
 function App() {
@@ -169,7 +172,7 @@ function App() {
             align="center"
             mx="auto"
             px={4}
-            mb={60}
+            mb="250px"
           >
             {emojiData.map((emoji, index) => (
               <EmojiCard
@@ -201,6 +204,19 @@ function App() {
           >
             <Landing />
 
+            <Button
+              leftIcon={<FcGoogle />}
+              onClick={user ? logout : singInWithGoogle}
+              my={7}
+              mb={12}
+            >
+              {auth.currentUser && auth.currentUser.displayName ? (
+                <p>Logout</p>
+              ) : (
+                <p>Sign in with Google</p>
+              )}
+            </Button>
+
             <img
               width={"100%"}
               alt=""
@@ -208,24 +224,16 @@ function App() {
               src="https://raw.githubusercontent.com/virejdasani/Dailymoji/main/assets/img/dailymoji-mac-transparent.png"
             ></img>
 
-            <button onClick={user ? logout : singInWithGoogle}>
-              {auth.currentUser && auth.currentUser.displayName ? (
-                <p>Logout</p>
-              ) : (
-                <>
-                  <div className="google-btn">
-                    <img
-                      className="google-icon-svg"
-                      alt="google button"
-                      src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
-                    />
-                    <p className="btn-text">
-                      <b>Sign in with Google</b>
-                    </p>
-                  </div>
-                </>
-              )}
-            </button>
+            <Flex
+              flexDir="column"
+              maxW={800}
+              align="center"
+              mx="auto"
+              px={4}
+              mt={20}
+            >
+              <Landing2 />
+            </Flex>
           </Flex>
         </>
       )}
