@@ -169,7 +169,14 @@ function App() {
               {moment().format("MMMM D, YYYY")}
             </Heading>
           </Flex>
-          <Flex flexDir="column" maxW={800} align="center" mx="auto" px={4}>
+          <Flex
+            flexDir="column"
+            maxW={800}
+            align="center"
+            mx="auto"
+            px={4}
+            mb={60}
+          >
             {emojiData.map((emoji, index) => (
               <EmojiCard
                 emoji={emoji.emoji}
