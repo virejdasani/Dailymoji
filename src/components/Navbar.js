@@ -22,6 +22,7 @@ import {
   MenuList,
   MenuItem,
   MenuDivider,
+  MenuGroup,
 } from "@chakra-ui/react";
 import { ExternalLinkIcon, QuestionOutlineIcon } from "@chakra-ui/icons";
 import DarkModeSwitch from "../components/DarkModeSwitch";
@@ -116,26 +117,28 @@ function Navbar({ username, auth, user, logout, singInWithGoogle }) {
                   />
                 </MenuButton>
                 <MenuList>
-                  <MenuItem>
-                    {auth.currentUser && auth.currentUser.displayName
-                      ? "Logged in as" + auth.currentUser.displayName
-                      : "Welcome to Dailymoji!"}
-                  </MenuItem>
-                  <MenuDivider />
-                  <MenuItem
-                    onClick={
+                  <MenuGroup
+                    title={
                       auth.currentUser && auth.currentUser.displayName
-                        ? logout
-                        : singInWithGoogle
+                        ? "Logged in as " + auth.currentUser.displayName
+                        : "Welcome to Dailymoji!"
                     }
-                    color="inherit"
                   >
-                    {auth.currentUser && auth.currentUser.displayName ? (
-                      <p>Logout</p>
-                    ) : (
-                      <p>Login with Google</p>
-                    )}
-                  </MenuItem>
+                    <MenuItem
+                      onClick={
+                        auth.currentUser && auth.currentUser.displayName
+                          ? logout
+                          : singInWithGoogle
+                      }
+                      color="inherit"
+                    >
+                      {auth.currentUser && auth.currentUser.displayName ? (
+                        <p>Logout</p>
+                      ) : (
+                        <p>Login with Google</p>
+                      )}
+                    </MenuItem>
+                  </MenuGroup>
                 </MenuList>
               </Menu>
             </Flex>
