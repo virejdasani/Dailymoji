@@ -11,9 +11,9 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import {
-  IoAnalyticsSharp,
-  IoLogoBitcoin,
-  IoSearchSharp,
+  IoLockClosedOutline,
+  IoFlashSharp,
+  IoGlobeOutline,
 } from "react-icons/io5";
 import { ReactElement } from "react";
 
@@ -41,7 +41,6 @@ export default function SplitWithImage() {
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
         <Stack spacing={4}>
           <Text
-            textTransform={"uppercase"}
             color={"blue.400"}
             fontWeight={600}
             fontSize={"sm"}
@@ -50,12 +49,12 @@ export default function SplitWithImage() {
             alignSelf={"flex-start"}
             rounded={"md"}
           >
-            Our Story
+            What is Dailymoji?
           </Text>
-          <Heading>A digital Product design agency</Heading>
+          <Heading>The easiest way to keep a journal</Heading>
           <Text color={"gray.500"} fontSize={"lg"}>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore
+            With Dailymoji, you can track your daily life with the tap of a
+            button!
           </Text>
           <Stack
             spacing={4}
@@ -67,22 +66,27 @@ export default function SplitWithImage() {
           >
             <Feature
               icon={
-                <Icon as={IoAnalyticsSharp} color={"yellow.500"} w={5} h={5} />
+                <Icon
+                  as={IoLockClosedOutline}
+                  color={"yellow.500"}
+                  w={5}
+                  h={5}
+                />
               }
               iconBg={useColorModeValue("yellow.100", "yellow.900")}
-              text={"Business Planning"}
+              text={"Fully secure and encrypted"}
             />
             <Feature
-              icon={<Icon as={IoLogoBitcoin} color={"green.500"} w={5} h={5} />}
+              icon={<Icon as={IoFlashSharp} color={"green.500"} w={5} h={5} />}
               iconBg={useColorModeValue("green.100", "green.900")}
-              text={"Financial Planning"}
+              text={"Blazing fast"}
             />
             <Feature
               icon={
-                <Icon as={IoSearchSharp} color={"purple.500"} w={5} h={5} />
+                <Icon as={IoGlobeOutline} color={"purple.500"} w={5} h={5} />
               }
               iconBg={useColorModeValue("purple.100", "purple.900")}
-              text={"Market Analysis"}
+              text={"100% open source"}
             />
           </Stack>
         </Stack>
