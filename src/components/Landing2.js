@@ -91,7 +91,7 @@ export default function SplitWithImage() {
             rounded={"md"}
             alt={"feature image"}
             src={
-              "https://raw.githubusercontent.com/virejdasani/Dailymoji/main/assets/img/iphone-dark-dailymoji-preview.png"
+              "https://raw.githubusercontent.com/virejdasani/Dailymoji/main/assets/img/iphone-dailymoji-preview.png"
             }
             objectFit={"cover"}
           />
