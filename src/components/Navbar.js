@@ -9,15 +9,6 @@ import {
   Menu,
   Avatar,
   useColorModeValue,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-  useDisclosure,
-  Link,
   MenuButton,
   MenuList,
   MenuItem,
@@ -28,8 +19,6 @@ import { ExternalLinkIcon, QuestionOutlineIcon } from "@chakra-ui/icons";
 import DarkModeSwitch from "../components/DarkModeSwitch";
 
 function Navbar({ username, auth, user, logout, singInWithGoogle }) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
   return (
     <Box
       id="navbar"
@@ -54,48 +43,51 @@ function Navbar({ username, auth, user, logout, singInWithGoogle }) {
             <Flex justify="space-between" w="100%" align="center">
               <Flex>
                 <DarkModeSwitch />
-                <IconButton
-                  ml={2}
-                  onClick={onOpen}
+                <MenuButton
+                  as={IconButton}
+                  aria-label="Options"
                   icon={<QuestionOutlineIcon />}
-                  bg={useColorModeValue("gray.100", "gray.800")}
+                  variant="ghost"
+                  ml={2}
+                  mr={2}
                 />
-                <Modal isOpen={isOpen} onClose={onClose}>
-                  <ModalOverlay />
-                  <ModalContent>
-                    <ModalHeader>
-                      Dailymoji is developed by{" "}
-                      <Link href="https://virejdasani.github.io/">
-                        Virej Dasani
-                      </Link>
-                    </ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody>
-                      Check it out on GitHub{" "}
-                      <Link href="https://github.com/virejdasani/Dailymoji">
-                        here
-                      </Link>
-                    </ModalBody>
-
-                    <ModalFooter>
-                      <Button colorScheme="blue" mr={3} onClick={onClose}>
-                        Close
-                      </Button>
-                    </ModalFooter>
-                  </ModalContent>
-                </Modal>
-
-                {/* {auth.currentUser && auth.currentUser.displayName ? (
-                  <>
-                    <IconButton
-                      ml={2}
-                      onClick={logout}
-                      icon={<ExternalLinkIcon />}
-                    />
-                  </>
-                ) : (
-                  ""
-                )} */}
+                <MenuList>
+                  <MenuItem
+                    onClick={() =>
+                      window.open("https://virejdasani.github.io/", "_blank")
+                    }
+                    icon={<ExternalLinkIcon />}
+                  >
+                    Developed by Virej Dasani
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() =>
+                      window.open(
+                        "https://github.com/virejdasani/Dailymoji",
+                        "_blank"
+                      )
+                    }
+                    icon={<ExternalLinkIcon />}
+                  >
+                    Dailymoji on GitHub
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() =>
+                      window.open("https://linktr.ee/Virejdasani", "_blank")
+                    }
+                    icon={<ExternalLinkIcon />}
+                  >
+                    Follow my socials {"<"}3
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() =>
+                      window.open("mailto:dasanivirej@gmail.com", "_blank")
+                    }
+                    icon={<ExternalLinkIcon />}
+                  >
+                    Contact the developer
+                  </MenuItem>
+                </MenuList>
               </Flex>
             </Flex>
 

@@ -4,12 +4,12 @@ import React, { useState, useEffect } from "react";
 import moment from "moment";
 import { Flex, Box, Button, Text, Heading, Image } from "@chakra-ui/react";
 import { FcGoogle } from "react-icons/fc";
-
 import EmojiCard from "./components/EmojiCard";
 import EmojiPanel from "./components/EmojiPanel";
 import DisappearingAlert from "./components/DisappearingAlert";
 import Landing from "./components/Landing";
 import Landing2 from "./components/Landing2";
+import Footer from "./components/Footer";
 import { auth, db, singInWithGoogle, logout } from "./firebase";
 
 function App() {
@@ -235,6 +235,7 @@ function App() {
               <Landing2 />
             </Flex>
           </Flex>
+          <Footer />
         </>
       )}
     </div>
