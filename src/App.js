@@ -119,7 +119,7 @@ function App() {
 
   return (
     <div className="App">
-      <Flex position="top: 0">
+      <Flex position="fixed" top="0" w="100%">
         <Navbar
           username={
             auth.currentUser && auth.currentUser.displayName

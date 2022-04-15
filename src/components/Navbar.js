@@ -21,12 +21,11 @@ import DarkModeSwitch from "../components/DarkModeSwitch";
 function Navbar({ username, auth, user, logout, singInWithGoogle }) {
   return (
     <Box
-      position="fixed"
+      w="100%"
       bg={useColorModeValue("gray.100", "gray.800")}
       px={4}
       borderBottom="1px"
       borderColor={useColorModeValue("gray.200", "gray.700")}
-      w="100%"
       backdropFilter="saturate(180%) blur(5px)"
     >
       <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
