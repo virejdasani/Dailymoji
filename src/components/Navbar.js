@@ -21,7 +21,6 @@ import DarkModeSwitch from "../components/DarkModeSwitch";
 function Navbar({ username, auth, user, logout, singInWithGoogle }) {
   return (
     <Box
-      id="navbar"
       position="fixed"
       bg={useColorModeValue("gray.100", "gray.800")}
       px={4}
