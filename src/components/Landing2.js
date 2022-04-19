@@ -94,6 +94,7 @@ export default function SplitWithImage() {
             />
           </Stack>
         </Stack>
+
         <Flex>
           <Image
             rounded={"md"}
@@ -105,6 +106,48 @@ export default function SplitWithImage() {
           />
         </Flex>
       </SimpleGrid>
+
+      <Stack mt={"20px"}>
+        <Text
+          color={"blue.400"}
+          fontWeight={600}
+          fontSize={"sm"}
+          bg={useColorModeValue("blue.50", "blue.900")}
+          p={2}
+          alignSelf={"flex-start"}
+          rounded={"md"}
+          mb={4}
+        >
+          How does it work?
+        </Text>
+        <Image
+          border="1px solid #A4AEBC"
+          rounded={"md"}
+          alt={"feature image"}
+          src={
+            "https://raw.githubusercontent.com/virejdasani/Dailymoji/main/assets/img/dailymoji-ph-2.png"
+          }
+          objectFit={"cover"}
+        />
+        <Image
+          border="1px solid #A4AEBC"
+          rounded={"md"}
+          alt={"feature image"}
+          src={
+            "https://raw.githubusercontent.com/virejdasani/Dailymoji/main/assets/img/dailymoji-ph-3.png"
+          }
+          objectFit={"cover"}
+        />
+        <Image
+          border="1px solid #A4AEBC"
+          rounded={"md"}
+          alt={"feature image"}
+          src={
+            "https://raw.githubusercontent.com/virejdasani/Dailymoji/main/assets/img/dailymoji-ph-1.png"
+          }
+          objectFit={"cover"}
+        />
+      </Stack>
     </Container>
   );
 }
