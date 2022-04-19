@@ -1,4 +1,4 @@
-# [Dailymoji](https://virejdasani.github.io/Dailymoji)
+# [Dailymoji](https://virejdasani.github.io/Dailymoji) - Capture your day with emoji
 
 # [Upvote Dailymoji on Product Hunt](https://www.producthunt.com/posts/dailymoji)
 
