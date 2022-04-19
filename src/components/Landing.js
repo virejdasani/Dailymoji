@@ -47,15 +47,17 @@ export default function CallToActionWithIllustration() {
         >
           Track your daily activities with emoji, add context later.
         </Text>
-        {/* <Button
-          rounded={"full"}
-          size={"lg"}
-          fontWeight={"normal"}
-          px={6}
-          leftIcon={<PlayIcon h={4} w={4} color={"gray.300"} />}
+        <a
+          href="https://www.producthunt.com/posts/dailymoji?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-dailymoji"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          See how Dailymoji Works
-        </Button> */}
+          <Image
+            src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=342587&theme=light"
+            alt="Dailymoji - Track&#0032;your&#0032;day&#0032;with&#0032;emoji&#0033; | Product Hunt"
+            style={{ width: "250px", height: "54px" }}
+          />
+        </a>
       </Stack>
     </div>
   );
