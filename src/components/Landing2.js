@@ -54,9 +54,11 @@ export default function SplitWithImage() {
           <Heading>The easiest way to keep a journal</Heading>
           <Text color={"gray.500"} fontSize={"lg"}>
             Dailymoji is an emoji-based journal that lets you track your daily
-            activities with the tap of a button! Unlike traditional journals,
-            you don't have to write anything, tap now, and you can add context
-            later!
+            activities with the tap of a button!
+          </Text>
+          <Text color={"gray.500"} fontSize={"lg"}>
+            Unlike traditional journals, you don't have to write anything, tap
+            now, and you can add context later!
           </Text>
           <Stack
             spacing={4}
