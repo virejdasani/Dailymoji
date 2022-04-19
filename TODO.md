@@ -1,7 +1,5 @@
 - add day moods
 - add a 'search your activities' bar
-- make a landing page with sign up options
-
 
 - add history:
 
