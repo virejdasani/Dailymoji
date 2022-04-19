@@ -14,8 +14,9 @@ import {
 } from "@chakra-ui/react";
 
 export default function EmojiPanel({ sendEmojiData }) {
-  const availableEmoji1 = ["🎮", "🥘", "💪", "🏐", "📚", "🚗"];
-  const availableEmoji2 = ["🎸", "📕", "💼", "🎬", "⚽", "🎨"];
+  const availableEmoji1 = ["🎮", "🍔", "💪", "⚽", "📚", "🎬"];
+  const availableEmoji2 = ["🎸", "📕", "💼", "🚗", "🍕", "🎨"];
+  const availableEmoji3 = ["🍪", "🥘", "😴", "🌸", "🐶", "🐱"];
 
   return (
     <Box
@@ -50,14 +51,32 @@ export default function EmojiPanel({ sendEmojiData }) {
               <Button
                 variant="ghost"
                 borderRadius={16}
-                width="64px"
-                height="64px"
+                width={["24px", "64px"]}
+                height={["24px", "64px"]}
                 onClick={() => {
                   sendEmojiData(emoji);
                 }}
                 key={index}
+                py={["2", "3", "4", "5"]}
               >
-                <Text fontSize="1xl">{emoji}</Text>
+                <Text fontSize={["4xl", "5xl"]}>{emoji}</Text>
+              </Button>
+            ))}
+          </TabPanel>
+          <TabPanel>
+            {availableEmoji3.map((emoji, index) => (
+              <Button
+                variant="ghost"
+                borderRadius={16}
+                width={["24px", "64px"]}
+                height={["24px", "64px"]}
+                onClick={() => {
+                  sendEmojiData(emoji);
+                }}
+                key={index}
+                py={["2", "3", "4", "5"]}
+              >
+                <Text fontSize={["4xl", "5xl"]}>{emoji}</Text>
               </Button>
             ))}
           </TabPanel>
@@ -85,6 +104,15 @@ export default function EmojiPanel({ sendEmojiData }) {
             textColor={useColorModeValue("#a0a0a0", "#C0C0C0")}
           >
             2
+          </Tab>
+          <Tab
+            margin="2"
+            height={8}
+            width={8}
+            padding="1"
+            textColor={useColorModeValue("#a0a0a0", "#C0C0C0")}
+          >
+            3
           </Tab>
         </TabList>
       </Tabs>
